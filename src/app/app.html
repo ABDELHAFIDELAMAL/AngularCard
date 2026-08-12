@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="p-4 mt-8">
+    <h1 class="p-4">{{ title }}</h1>
+    <h2 class="p-4 shadow text-black w-1/4 rounded-md">Count: {{ count }}</h2>
+    <button (click)="increment()" class="px-4 py-1 m-2 bg-green-500 rounded-md shadow">
+        Increment
+    </button>
+    <button (click)="decrement()" class="px-4 py-1 m-2 bg-red-500 rounded-md shadow">
+        Decrement
+    </button>
+
+    <div>
+        <label for="">username :</label>
+        <input type="text" [(ngModel)]="username" placeholder="Enter your username" class="p-2 m-2 border-2 border-gray-300 rounded-md">
+        <p>Your username is : {{ username }}</p>
+    </div>
+    <div class="" >
+        @for( user of users ; track user.username){
+            <app-user-card 
+                [username]="user.username"
+                [age]="user.age"
+                [email]="user.email"
+                [password]="user.password">
+            </app-user-card>
+        }
+    </div>
+    <div>
+        @if(isLogin){
+            <h2 >Welcome , Abdelhafid!</h2>
+            <button (click)="logout()" class="px-4 py-1 m-2 bg-red-500 rounded-md shadow">
+                Logout
+            </button>
+        }@else {
+            <h2>Please log in to access your account.</h2>
+            <button (click)="login()" class="px-4 py-1 m-2 bg-green-500 rounded-md shadow">
+                Log In
+            </button>
+        }
+    </div>
+    <div>
+        <app-form></app-form>
+    </div>
+</div>
