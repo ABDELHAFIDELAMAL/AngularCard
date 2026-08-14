@@ -1,5 +1,9 @@
 <app-header></app-header>
-<div class="p-4 mt-8">
+<div class="container mx-auto mt-32">
+    <router-outlet></router-outlet>
+</div>
+<div>
+    <div class="p-4 mt-8">
     <h1 class="p-4">{{ title }}</h1>
     <h2 class="p-4 shadow text-black w-1/4 rounded-md">Count: {{ count }}</h2>
     <button (click)="increment()" class="px-4 py-1 m-2 bg-green-500 rounded-md shadow">
@@ -40,4 +44,10 @@
     <div>
         <app-form></app-form>
     </div>
+    <div class="flex space-x-4 mt-4">
+        <a class="px-4 py-1 bg-blue-500 text-white rounded-md shadow" routerLink="/home">Home</a>
+        <a class="px-4 py-1 bg-blue-500 text-white rounded-md shadow" routerLink="/about">About</a>
+        <a class="px-4 py-1 bg-blue-500 text-white rounded-md shadow" routerLink="/contact">Contact</a>
+    </div>
+</div>
 </div>

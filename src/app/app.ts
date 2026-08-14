@@ -4,13 +4,14 @@ import { UserCard } from "./user-card/user-card";
 import { Form } from "./form/form";
 import { UserService } from './services/user';
 import { HeaderComponent } from "./header/header";
-// import { DUMMY_USERS } from '../dummy-users' ;
+import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 // 42 : 30
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, UserCard, Form, HeaderComponent ],
+  imports: [FormsModule, UserCard, Form, HeaderComponent , RouterOutlet , RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css' ,
   standalone : true
