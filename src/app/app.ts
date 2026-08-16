@@ -6,21 +6,19 @@ import { UserService } from './services/user';
 import { HeaderComponent } from "./header/header";
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
-import { FirstAPI } from "./fisrt-api/fisrt-api";
+import { AddProductComponent } from "./product/product";
 
 // 42 : 30
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, UserCard, Form, HeaderComponent, RouterOutlet, RouterLink, FirstAPI],
+  imports: [FormsModule, UserCard, Form, HeaderComponent, RouterOutlet, RouterLink, AddProductComponent],
   templateUrl: './app.html',
   styleUrl: './app.css' ,
   standalone : true
 })
 
 export class App {
-
-  // selUser = DUMMY_USERS [ randomIndex ] ;
 
   title = "Hello, Abdelhafid";
   count = 0 ;

@@ -1,1 +1,73 @@
-<p>product works!</p>
+<div class="max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md border">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Add Product</h2>
+
+  <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 text-red-700 text-sm rounded">
+    {{ errorMessage }}
+  </div>
+
+  <!-- 1. ربط الـ FormGroup هنا -->
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    
+    <!-- Name & Brand -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Name</label>
+        <!-- 2. استعمال formControlName عوض ngModel -->
+        <input type="text" formControlName="name" class="mt-1 w-full p-2 border rounded-md" />
+        <span *ngIf="productForm.get('name')?.touched && productForm.get('name')?.invalid" class="text-xs text-red-500">
+          Name is required (3 to 50 characters).
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Brand</label>
+        <input type="text" formControlName="brand" class="mt-1 w-full p-2 border rounded-md" />
+        <span *ngIf="productForm.get('brand')?.touched && productForm.get('brand')?.invalid" class="text-xs text-red-500">
+          Brand is required.
+        </span>
+      </div>
+    </div>
+
+    <!-- Category & Price & Quantity -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Category</label>
+        <input type="text" formControlName="category" placeholder="e.g. Electronics" class="mt-1 w-full p-2 border rounded-md" />
+        <span *ngIf="productForm.get('category')?.touched && productForm.get('category')?.invalid" class="text-xs text-red-500">
+          Category is required.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Price ($)</label>
+        <input type="number" step="0.01" formControlName="price" class="mt-1 w-full p-2 border rounded-md" />
+        <span *ngIf="productForm.get('price')?.touched && productForm.get('price')?.invalid" class="text-xs text-red-500">
+          Valid price is required.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Quantity</label>
+        <input type="number" formControlName="quantity" class="mt-1 w-full p-2 border rounded-md" />
+        <span *ngIf="productForm.get('quantity')?.touched && productForm.get('quantity')?.invalid" class="text-xs text-red-500">
+          Quantity must be 0 or more.
+        </span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Description</label>
+      <textarea formControlName="description" rows="3" class="mt-1 w-full p-2 border rounded-md"></textarea>
+      <span *ngIf="productForm.get('description')?.touched && productForm.get('description')?.invalid" class="text-xs text-red-500">
+        Description is required (3 to 200 characters).
+      </span>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="isSubmitting"
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-md disabled:opacity-50">
+      {{ isSubmitting ? 'Saving...' : 'Add Product' }}
+    </button>
+  </form>
+</div>
